@@ -1,4 +1,12 @@
+using CustomIdentityApp.Models;
+using EducationApp.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<AppCtx>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
@@ -18,6 +26,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();    // подключение аутентификации
 app.UseAuthorization();
 
 app.MapControllerRoute(
