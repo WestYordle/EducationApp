@@ -2,7 +2,7 @@ using CustomIdentityApp.Models;
 using EducationApp.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Configuration; 
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AppCtx>(options =>
