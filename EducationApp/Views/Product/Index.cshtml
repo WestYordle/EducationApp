@@ -1,0 +1,59 @@
+﻿@model IEnumerable<EducationApp.Models.Data.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@if (User.Claims.Where(c => c.Type == System.Security.Claims.ClaimTypes.Role).Select(s => s.Value).Contains("admin"))
+{
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameProduct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Manufacturer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdСategory)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameProduct)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Manufacturer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdСategory)
+            </td>
+            <td>
+                <!--<a asp-action="AddToCart" asp-route-id="item.Id">AddToCart</a> |-->
+                @if (User.Claims.Where(c => c.Type == System.Security.Claims.ClaimTypes.Role).Select(s => s.Value).Contains("admin"))
+                {
+                     <a asp-action="Edit" asp-route-id="@item.Id">Edit  |</a>
+                }
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> 
+                @if (User.Claims.Where(c => c.Type == System.Security.Claims.ClaimTypes.Role).Select(s => s.Value).Contains("admin"))
+                {
+                    <a asp-action="Delete" asp-route-id="@item.Id">| Delete |</a>
+                }
+            </td>
+               
+        </tr>
+        }
+    </tbody>
+</table>
+

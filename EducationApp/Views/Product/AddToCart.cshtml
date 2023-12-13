@@ -1,0 +1,34 @@
+﻿@model EducationApp.ViewModels.ProductViewModels.AddProductToCartViewModels
+@{
+    ViewData["Title"] = "AddToCart";
+}
+
+<h1>Add to cart</h1>
+
+<h3>Введите количество продукции</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <form asp-action="AddToCart">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <dl class="row">
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+        </dl>
+
+
+        <div class="form-group">
+            <input type="submit" value="AddToCart" class="btn btn-primary" />
+        </div>
+        <a asp-action="Index">Back to List</a>
+    </form>
+
+    <!--<form asp-action="AddItem">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Add" class="btn btn-danger" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>-->
+</div>

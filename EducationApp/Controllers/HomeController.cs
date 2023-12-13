@@ -1,4 +1,5 @@
 ﻿using EducationApp.Models;
+using EducationApp.Models.Data;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
